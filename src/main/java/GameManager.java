@@ -23,6 +23,9 @@ public class GameManager {
     final int BLOCK_START_X;
     final int BLOCK_START_Y;
 
+    // timed rendering
+    public static int dropInterval = 60; // block drops every 60 frames (1 sec)
+
     public GameManager() {
         // main area frame
         left_x = (GamePanel.WIDTH/2) - (WIDTH/2); // 1280/2 - 360/2 = 460
@@ -36,10 +39,11 @@ public class GameManager {
         // set starting block at top of window
         currentBlock = new Block_L1();
         currentBlock.setXY(BLOCK_START_X, BLOCK_START_Y);
+
     }
 
     public void update() {
-
+        currentBlock.update();
     }
 
     public void draw(Graphics2D graphics2D) {

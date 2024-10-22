@@ -4,6 +4,7 @@ public class BlockFactory {
 
     public Block[] block = new Block[4];
     public Block[] tempBlock = new Block[4];
+    int autoDropCounter = 0;
 
     public void create(Color c) {
         block[0] = new Block(c);
@@ -19,7 +20,17 @@ public class BlockFactory {
 
     }
     public void updateXY(int direction) {}
-    public  void update() {}
+    public  void update() {
+        autoDropCounter++; // counts every frame
+        if (autoDropCounter == GameManager.dropInterval) {
+            // block drops
+            block[0].y += Block.SIZE;
+            block[1].y += Block.SIZE;
+            block[2].y += Block.SIZE;
+            block[3].y += Block.SIZE;
+            autoDropCounter = 0; // resets counter
+        }
+    }
     public void draw(Graphics2D graphics2D) {
 
         int spacing = 2; // to make smaller, distinguishable blocks without changing x & y
