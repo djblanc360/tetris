@@ -18,12 +18,24 @@ public class GameManager {
     // a single block is 30 pixels
     // so 12 blocks horizontally
 
+    // Block Factory
+    BlockFactory currentBlock;
+    final int BLOCK_START_X;
+    final int BLOCK_START_Y;
+
     public GameManager() {
         // main area frame
         left_x = (GamePanel.WIDTH/2) - (WIDTH/2); // 1280/2 - 360/2 = 460
         right_x = left_x + WIDTH;
         top_y = 50;
         bottom_y = top_y + HEIGHT;
+
+        BLOCK_START_X = left_x + (WIDTH/2) - Block.SIZE;
+        BLOCK_START_Y = top_y + Block.SIZE;
+
+        // set starting block at top of window
+        currentBlock = new Block_L1();
+        currentBlock.setXY(BLOCK_START_X, BLOCK_START_Y);
     }
 
     public void update() {
@@ -44,6 +56,11 @@ public class GameManager {
         graphics2D.setFont(new Font("Arial", Font.PLAIN, 30));
         graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         graphics2D.drawString("next", x+60, y+60);
+
+        // draw current block
+        if (currentBlock != null) {
+            currentBlock.draw(graphics2D);
+        }
     }
 
 }

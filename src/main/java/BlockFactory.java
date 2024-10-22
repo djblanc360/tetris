@@ -7,9 +7,9 @@ public class BlockFactory {
 
     public void create(Color c) {
         block[0] = new Block(c);
+        block[1] = new Block(c);
         block[2] = new Block(c);
         block[3] = new Block(c);
-        block[4] = new Block(c);
         tempBlock[0] = new Block(c);
         tempBlock[1] = new Block(c);
         tempBlock[2] = new Block(c);
@@ -20,5 +20,13 @@ public class BlockFactory {
     }
     public void updateXY(int direction) {}
     public  void update() {}
-    public void draw(Graphics2D graphics2D) {}
+    public void draw(Graphics2D graphics2D) {
+
+        int spacing = 2; // to make smaller, distinguishable blocks without changing x & y
+        graphics2D.setColor(block[0].color);
+        graphics2D.fillRect(block[0].x+spacing, block[0].y+spacing, Block.SIZE-(spacing*2), Block.SIZE-(spacing*2));
+        graphics2D.fillRect(block[1].x+spacing, block[1].y+spacing, Block.SIZE-(spacing*2), Block.SIZE-(spacing*2));
+        graphics2D.fillRect(block[2].x+spacing, block[2].y+spacing, Block.SIZE-(spacing*2), Block.SIZE-(spacing*2));
+        graphics2D.fillRect(block[3].x+spacing, block[3].y+spacing, Block.SIZE-(spacing*2), Block.SIZE-(spacing*2));
+    }
 }
