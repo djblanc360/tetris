@@ -29,6 +29,7 @@ public class GameManager {
     public void update() {
 
     }
+
     public void draw(Graphics2D graphics2D) {
 
         // main window
@@ -40,6 +41,9 @@ public class GameManager {
         int x = right_x + 100;
         int y = bottom_y - 200;
         graphics2D.drawRect(x, y, 200, 200);
+        graphics2D.setFont(new Font("Arial", Font.PLAIN, 30));
+        graphics2D.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        graphics2D.drawString("next", x+60, y+60);
     }
 
 }
